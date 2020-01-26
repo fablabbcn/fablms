@@ -10,6 +10,33 @@
   </head>
 
   <body>
+
+    <% if current_user %>
+      <h3>
+      <%= link_to current_user.selected_organization, organization_url(current_user.selected_organization) %>
+      </h3>
+      <%= link_to "Part of #{current_user.organizations.count} organizations", organizations_url %>
+      <br>
+      <br>
+
+      <%= current_user.inspect  %>
+      <br>
+      <%= link_to  destroy_user_session_path, method: :delete, data: {confirm: t('shared.are_you_sure')}, class: 'dropdown-item' do %>
+        <%= t('shared.logout') %>
+      <% end %>
+      <br>
+      <br>
+
+      <div>
+        <h2>
+          <%= link_to "Years", years_url %>
+          <%= link_to "Courses", courses_url %>
+          <%# link_to "Lab", labs_url %>
+          <%= link_to "Students", students_url %>
+        </h2>
+      </div>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

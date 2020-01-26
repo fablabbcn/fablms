@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @lab.name %>
+</p>
+
+<p>
+  <strong>Slug:</strong>
+  <%= @lab.slug %>
+</p>
+
+<p>
+  <strong>Gitlab:</strong>
+  <%= @lab.gitlab_id %>
+</p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @lab.course_id %>
+</p>
+
+<%= link_to 'Edit', edit_lab_path(@lab) %> |
+<%= link_to 'Back', labs_path %>
+
+<%= render @lab.students %>

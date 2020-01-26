@@ -1,24 +1,25 @@
-# README
+# Gitlab remote
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app helps you create students and folders / groups in Gitlab.
 
-Things you may want to cover:
+You supply:
 
-* Ruby version
+* Gitlab URL to your Gitlab api
+* Your Gitlab API token
+* Gitlab ID of the folder / group to operate on.
+* A CSV file with students.
 
-* System dependencies
+## Application workflow
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. Import the CSV
+1. Show a Students list with checkboxes
+1. The user can select which students he needs to operate on, or select all
+1. Perform 'actions' (clicking a button) like:
+  * Create the folders in Gitlab
+  * Create students account in Gitlab
+  * Add instructors to labs in Gitlab
+  * etc.
+1. In **Phase 2** we would need:
+  * Fetch GitLab API issue statistics:
+    * Open / Closed issues
+  * Grade each student?

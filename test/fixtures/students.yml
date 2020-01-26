@@ -1,0 +1,31 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: MyString
+  name: MyString
+  username: MyString
+  email: MyString
+  continuing: false
+  is_instructor: false
+  lab_name: MyString
+  lab_handle: MyString
+  country: MyString
+  continent: MyString
+  website_path: MyString
+  organization: one
+  course: one
+
+two:
+  code: MyString
+  name: MyString
+  username: MyString
+  email: MyString
+  continuing: false
+  is_instructor: false
+  lab_name: MyString
+  lab_handle: MyString
+  country: MyString
+  continent: MyString
+  website_path: MyString
+  organization: two
+  course: two

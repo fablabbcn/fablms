@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @organization.name %>
+</p>
+
+<p>
+  <strong>Gitlab url:</strong>
+  <%= @organization.gitlab_url %>
+</p>
+
+<p>
+  <strong>Gitlab token:</strong>
+  <%= @organization.gitlab_token %>
+</p>
+
+<p>
+  <strong>Gitlab folder:</strong>
+  <%= @organization.gitlab_folder_id %>
+</p>
+
+<%= link_to 'Edit', edit_organization_path(@organization) %> |
+<%= link_to 'Back', organizations_path %>
+
+<%= render @organization.years %>

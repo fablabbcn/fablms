@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @student.code %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @student.name %>
+</p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @student.username %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @student.email %>
+</p>
+
+<p>
+  <strong>Continuing:</strong>
+  <%= @student.continuing %>
+</p>
+
+<p>
+  <strong>Is instructor:</strong>
+  <%= @student.is_instructor %>
+</p>
+
+<p>
+  <strong>Lab name:</strong>
+  <%= @student.lab_name %>
+</p>
+
+<p>
+  <strong>Lab handle:</strong>
+  <%= @student.lab_handle %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @student.country %>
+</p>
+
+<p>
+  <strong>Continent:</strong>
+  <%= @student.continent %>
+</p>
+
+<p>
+  <strong>Website path:</strong>
+  <%= @student.website_path %>
+</p>
+
+<p>
+  <strong>Organization:</strong>
+  <%= @student.organization_id %>
+</p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @student.course_id %>
+</p>
+
+<%= link_to 'Edit', edit_student_path(@student) %> |
+<%= link_to 'Back', students_path %>

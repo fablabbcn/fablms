@@ -1,0 +1,84 @@
+<%= form_with(model: student, local: true) do |form| %>
+  <% if student.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(student.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+      <ul>
+        <% student.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!--
+  <div class="field">
+    <%= form.label :organization_id %>
+    <%= form.select :organization_id, Organization.pluck(:name, :id) %>
+  </div>
+  -->
+
+  <div class="field">
+    <%= form.label :course_id %>
+    <%= form.select :course_id, Course.pluck(:name, :id) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :code %>
+    <%= form.text_field :code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :username %>
+    <%= form.text_field :username %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :continuing %>
+    <%= form.check_box :continuing %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_instructor %>
+    <%= form.check_box :is_instructor %>
+  </div>
+
+  <div class="field">
+    <%= form.label :lab_name %>
+    <%= form.text_field :lab_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :lab_handle %>
+    <%= form.text_field :lab_handle %>
+  </div>
+
+  <div class="field">
+    <%= form.label :country %>
+    <%= form.text_field :country %>
+  </div>
+
+  <div class="field">
+    <%= form.label :continent %>
+    <%= form.text_field :continent %>
+  </div>
+
+  <div class="field">
+    <%= form.label :website_path %>
+    <%= form.text_field :website_path %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
