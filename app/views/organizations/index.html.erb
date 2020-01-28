@@ -16,7 +16,7 @@
   <tbody>
     <% @organizations.each do |organization| %>
       <tr>
-        <td><%= organization.name %></td>
+        <td><%= link_to organization.name, organization %></td>
         <td><%= organization.gitlab_url %></td>
         <td><%= organization.gitlab_token %></td>
         <td><%= organization.gitlab_folder_id %></td>

@@ -12,14 +12,13 @@
   <body>
 
     <% if current_user %>
-      <h3>
-      <%= link_to current_user.selected_organization, organization_url(current_user.selected_organization) %>
-      </h3>
       <%= link_to "Part of #{current_user.organizations.count} organizations", organizations_url %>
-      <br>
-      <br>
+      <h3>
+      Selected organization: <%= link_to current_user.selected_organization, organization_url(current_user.selected_organization) %>
+      </h3>
 
       <%= current_user.inspect  %>
+      <br>
       <br>
       <%= link_to  destroy_user_session_path, method: :delete, data: {confirm: t('shared.are_you_sure')}, class: 'dropdown-item' do %>
         <%= t('shared.logout') %>

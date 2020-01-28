@@ -12,7 +12,7 @@ You supply:
 ## Application workflow
 
 1. Import the CSV
-1. Show a Students list with checkboxes
+1. Show a Student list with checkboxes
 1. The user can select which students he needs to operate on, or select all
 1. Perform 'actions' (clicking a button) like:
   * Create the folders in Gitlab

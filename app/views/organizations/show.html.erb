@@ -24,3 +24,8 @@
 <%= link_to 'Back', organizations_path %>
 
 <%= render @organization.years %>
+
+<hr>
+
+<%= link_to "Check Gitlab", gitlab_check_organization_url, remote: true %>
+<div id="gitlab"><p>Gitlab Status should show here.</p></div>

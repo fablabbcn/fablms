@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :organizations
+  resources :organizations do
+    member do
+      get 'gitlab_check'
+    end
+  end
   resources :students do
     collection do
       post :edit_multiple

@@ -4,21 +4,26 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  before_create :create_org_on_signup
+  before_validation :create_org_on_signup
+
   has_many :user_organizations
   has_many :organizations, through: :user_organizations
+  belongs_to :organization
 
   def create_org_on_signup
-    #if not invited
-    org = Organization.create! name: "#{email.split("@")[0]} Organization"
-    # add to array of orgs
-    self.organizations << org
+    # if not invited
+    # New users must belong to an organization, let's create it automatically
+    if new_record?
+      org = Organization.create! name: "#{email.split("@")[0]} Organization"
+      self.organization_id = org.id
+      # add to array of orgs
+      self.organizations << org
+    end
   end
 
   def selected_organization
-    # TODO: add migration variable to switch between orgs
     # if the variable is empty, use the first org as fallback
-    organizations.first
+    organization || organizations.first
   end
 
 end
