@@ -6,6 +6,8 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Year count</th>
+      <th>Student count</th>
       <th>Gitlab url</th>
       <th>Gitlab token</th>
       <th>Gitlab folder</th>
@@ -17,6 +19,8 @@
     <% @organizations.each do |organization| %>
       <tr>
         <td><%= link_to organization.name, organization %></td>
+        <td><%= organization.years.count %></td>
+        <td><%= organization.students.count %></td>
         <td><%= organization.gitlab_url %></td>
         <td><%= organization.gitlab_token %></td>
         <td><%= organization.gitlab_folder_id %></td>

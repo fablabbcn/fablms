@@ -13,4 +13,17 @@
 <%= link_to 'Edit', edit_course_path(@course) %> |
 <%= link_to 'Back', courses_path %>
 
-<%= render @course.students %>
+<hr>
+<%= render template: 'students/index' %>
+
+<br>
+
+<%= form_tag import_students_url, multipart: true do %>
+  <hr>
+  <h2>Import Students with CSV</h2>
+  <p> Supported fields: <b> code;name;email;continuing;lab_name;lab_handle;country;continent;username;website_path </b> </p>
+  <%= file_field_tag :file %>
+  <%= hidden_field_tag :course_id, params[:id] %>
+  <%= submit_tag "Import students" %>
+  <hr>
+<% end %>

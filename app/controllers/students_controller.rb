@@ -4,12 +4,12 @@ class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
   def index
-    @students = Student.all
+    @students = current_user.organization.students
   end
 
   def import
-    Student.import_csv(params[:file], current_user.selected_organization)
-    redirect_to students_url, notice: 'Students created'
+    Student.import_csv(params[:file], current_user.selected_organization, params[:course_id])
+    redirect_to course_url(params[:course_id]), notice: 'Students created'
   end
 
   # GET /students/1

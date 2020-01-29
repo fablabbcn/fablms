@@ -4,7 +4,7 @@ class YearsController < ApplicationController
   # GET /years
   # GET /years.json
   def index
-    @years = Year.all
+    @years = current_user.organization.years
   end
 
   # GET /years/1
@@ -64,7 +64,7 @@ class YearsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_year
-      @year = Year.find(params[:id])
+      @year = current_user.organization.years.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

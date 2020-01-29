@@ -18,7 +18,8 @@
 
   <div class="field">
     <%= form.label :year_id %>
-    <%= form.select :year_id, Year.pluck(:name, :id) %>
+    <%= form.select :year_id, current_user.organization.years.pluck(:name, :id), selected: params[:year] %>
+    <%= form.hidden_field :organization_id, value: current_user.organization_id %>
   </div>
 
   <div class="actions">

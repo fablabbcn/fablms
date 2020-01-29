@@ -4,12 +4,13 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    @courses = Course.all
+    @courses = current_user.organization.courses
   end
 
   # GET /courses/1
   # GET /courses/1.json
   def show
+    @students = @course.students
   end
 
   # GET /courses/new
@@ -64,11 +65,11 @@ class CoursesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_course
-      @course = Course.find(params[:id])
+      @course = current_user.organization.courses.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:name, :year_id)
+      params.require(:course).permit(:name, :year_id, :organization_id)
     end
 end

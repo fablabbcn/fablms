@@ -7,10 +7,15 @@
 
 <p>
   <strong>Organization:</strong>
-  <%= @year.organization_id %>
+  <%= @year.organization %>
 </p>
 
 <%= link_to 'Edit', edit_year_path(@year) %> |
 <%= link_to 'Back', years_path %>
 
+<hr>
+<h2>Courses in <%= @year %></h2>
 <%= render @year.courses %>
+
+<br>
+<%= link_to "Create a new course in #{@year}", new_course_url(year: @year) %>

@@ -23,9 +23,18 @@
 <%= link_to 'Edit', edit_organization_path(@organization) %> |
 <%= link_to 'Back', organizations_path %>
 
-<%= render @organization.years %>
+
+<% if current_user.organization.gitlab_url.present? && current_user.organization.gitlab_token.present? %>
+  <hr>
+  <div class="div-gitlab-check">
+    <%= link_to "Check Gitlab", gitlab_check_organization_url, remote: true %>
+    <div id="gitlab"><p>Gitlab Status should show here.</p></div>
+  </div>
+<% end %>
 
 <hr>
+<h2>Years</h2>
 
-<%= link_to "Check Gitlab", gitlab_check_organization_url, remote: true %>
-<div id="gitlab"><p>Gitlab Status should show here.</p></div>
+<%= render @organization.years %>
+<br>
+<%= link_to "Create a new year", new_year_url %>

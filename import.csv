@@ -1,0 +1,3 @@
+code;name;email;continuing;lab_name;lab_handle;country;continent;username
+CODE-001;Some Name;some@test.com;false;Barcelona;barcelona;Spain;Europe;some.name
+CODE-002;Another Name;another@test.com;true;Barcelona;barcelona;Spain;Europe;another.name
