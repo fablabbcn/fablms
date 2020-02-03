@@ -7,6 +7,28 @@ class StudentsController < ApplicationController
     @students = current_user.organization.students
   end
 
+  def edit_multiple
+    puts '---- Perform on multiple students ----'
+    puts params[:student_ids]
+
+    Gitlab.endpoint = current_user.selected_organization.gitlab_url
+    Gitlab.private_token = current_user.selected_organization.gitlab_token
+
+    @gitlab_users = []
+    params[:student_ids].each do |i|
+      stud = current_user.organization.students.find(i)
+      next if stud.email.blank?
+
+      # TODO: Do something with user on gitlab
+      user_in_gitlab = Gitlab.user_search(stud.email)
+      @gitlab_users << user_in_gitlab if user_in_gitlab.any?
+    end
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def import
     Student.import_csv(params[:file], current_user.selected_organization, params[:course_id])
     redirect_to course_url(params[:course_id]), notice: 'Students created'

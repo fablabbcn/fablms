@@ -1,0 +1,15 @@
+<div id="edit-multiple" class="name">
+  <h4> Result: </h4>
+  <% if @gitlab_users %>
+    <p>Found <%= @gitlab_users.size %> users:</p>
+
+    <% @gitlab_users.each do |u| %>
+      <%# debug u.first %>
+      <p>
+      <%= u.first.id %> -
+      <%= u.first.name %> -
+      <%= u.first.username %>
+      </p>
+    <% end %>
+  <% end %>
+</div>
