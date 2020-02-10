@@ -27,7 +27,12 @@
 <% if current_user.organization.gitlab_url.present? && current_user.organization.gitlab_token.present? %>
   <hr>
   <div class="div-gitlab-check">
-    <%= link_to "Check Gitlab", gitlab_check_organization_url, remote: true %>
+    <%= link_to "Check Gitlab version", gitlab_check_organization_url(item:'version'), remote: true %>
+    <br>
+    <%= link_to "Check Gitlab folder #{@organization.gitlab_folder_id}", gitlab_check_organization_url, remote: true %>
+    <br>
+    <%= link_to "Check Gitlab folder members", gitlab_check_organization_url(item:'students'), remote: true %>
+    <br>
     <div id="gitlab"><p>Gitlab Status should show here.</p></div>
   </div>
 <% end %>

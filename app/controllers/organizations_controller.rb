@@ -13,8 +13,13 @@ class OrganizationsController < ApplicationController
     Gitlab.endpoint = current_user.selected_organization.gitlab_url
     Gitlab.private_token = current_user.selected_organization.gitlab_token
 
-    @group = Gitlab.group(current_user.selected_organization.gitlab_folder_id)
-    @version = Gitlab.version.version
+    if params[:item] == 'version'
+      @version = Gitlab.version.version
+    elsif params[:item] == 'students'
+      @members = Gitlab.group_members(current_user.selected_organization.gitlab_folder_id)
+    else
+      @response = Gitlab.group(current_user.selected_organization.gitlab_folder_id)
+    end
 
     respond_to do |format|
       format.js

@@ -1,5 +1,30 @@
-<p>
-Version: <%= @version %>
-</p>
+<% if @version %>
+  <p> Version: <%= @version %> </p>
+<% end %>
 
-<p><%= @group.inspect %></p>
+<% if @response %>
+  <p><%= @response.inspect %></p>
+<% end %>
+
+<% if @members %>
+  <p>
+  Found <%= @members.size %> members
+  </p>
+
+  <table>
+    <% @members.each do |m| %>
+      <tr>
+        <td>
+          <%= m.id %>
+        </td>
+        <td>
+          <%= m.name %>
+        </td>
+        <td>
+          <%= link_to m.username, m.web_url %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+
+<% end %>
