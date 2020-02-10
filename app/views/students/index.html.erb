@@ -1,7 +1,7 @@
 <h1>Students</h1>
 
 <%= form_tag edit_multiple_students_url, remote: true do %>
-  <table>
+  <table class="table table-sm bg-white table-bordered table-hover table-striped">
     <thead>
       <tr>
         <th></th>
@@ -46,7 +46,7 @@
 <% end %>
 
 <br>
-<%= link_to 'New Student', new_student_path %>
+<%= link_to 'New Student', new_student_path, class: 'btn btn-outline-primary my-3'  %>
 
 <hr>
 <%= render partial: 'students/edit_multiple_results' %>

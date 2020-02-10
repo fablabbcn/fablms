@@ -8,7 +8,7 @@
   <%= @organization.gitlab_folder_id %>
 </p>
 
-<%= link_to 'Edit', edit_organization_path(@organization) %> |
+<%= link_to 'Edit', edit_organization_path(@organization) %>
 
 <% if current_user.organization.gitlab_url.present? && current_user.organization.gitlab_token.present? %>
   <hr>
@@ -29,4 +29,4 @@
 
 <%= render @organization.years %>
 <br>
-<%= link_to "Create a new year", new_year_url %>
+<%= link_to "Create a new year", new_year_url, class: 'btn btn-outline-primary my-3'  %>
