@@ -5,38 +5,70 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
 
-    <% if current_user %>
-      <%= link_to "Part of #{current_user.organizations.count} organizations", organizations_url %>
-      <br>
-      <%= link_to  destroy_user_session_path, method: :delete, data: {confirm: t('shared.are_you_sure')}, class: 'dropdown-item' do %>
-        <%= t('shared.logout') %>
-      <% end %>
-      <br>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Fab LMS</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-      <h3>
-      Selected organization: <%= link_to current_user.selected_organization, organization_url(current_user.selected_organization) %>
-      </h3>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+          <%= link_to "Courses", courses_url, class:'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Years", years_url, class:'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Students", students_url, class:'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%# link_to "Lab", labs_url, class:'nav-link' %>
+          </li>
 
-      <%= current_user.inspect  %>
-      <br>
-      <br>
-
-      <hr>
-      <div>
-        <%= link_to "Years", years_url %>
-        <%= link_to "Courses", courses_url %>
-        <%# link_to "Lab", labs_url %>
-        <%= link_to "Students", students_url %>
+          <% if current_user %>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= current_user.email %>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <%= link_to "Part of #{current_user.organizations.count} organizations", organizations_url, class: 'dropdown-item' %>
+                <div class="dropdown-divider"></div>
+                <%= link_to  destroy_user_session_path, method: :delete, data: {confirm: t('shared.are_you_sure')}, class: 'dropdown-item' do %>
+                  <%= t('shared.logout') %>
+                <% end %>
+              </div>
+            </li>
+          <% end %>
+        </ul>
       </div>
-      <hr>
-    <% end %>
+    </nav>
 
-    <%= yield %>
+    <div class="container-fluid mt-4">
+      <% if current_user %>
+        <%# current_user.inspect  %>
+        <h3> Selected organization: <%= link_to current_user.selected_organization, organization_url(current_user.selected_organization) %> </h3>
+      <% end %>
+
+      <%= yield %>
+    </div>
+
   </body>
 </html>
