@@ -35,10 +35,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto w-100">
           <li class="nav-item">
-          <%= link_to "Courses", courses_url, class:'nav-link' %>
+            <%= link_to "Organizations", organizations_url, class:'nav-link' %>
           </li>
           <li class="nav-item">
             <%= link_to "Years", years_url, class:'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Courses", courses_url, class:'nav-link' %>
           </li>
           <li class="nav-item">
             <%= link_to "Students", students_url, class:'nav-link' %>
@@ -71,6 +74,7 @@
     </nav>
 
     <div class="container-fluid mt-4">
+      <p id="notice"><%= notice %></p>
 
       <%= yield %>
 
