@@ -23,13 +23,17 @@
   <body>
 
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Fab LMS</a>
+      <% if current_user %>
+        <%= link_to current_user.organization.name, organization_url(current_user.organization), class:'navbar-brand' %>
+      <% else %>
+        <a class="navbar-brand" href="#">Fab LMS</a>
+      <% end %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mr-auto w-100">
           <li class="nav-item">
           <%= link_to "Courses", courses_url, class:'nav-link' %>
           </li>
@@ -44,12 +48,17 @@
           </li>
 
           <% if current_user %>
-            <li class="nav-item dropdown">
+            <li class=" ml-sm-auto nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <%= current_user.email %>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <%= link_to "Part of #{current_user.organizations.count} organizations", organizations_url, class: 'dropdown-item' %>
+
+                <%= link_to "Organizations (#{current_user.organizations.count})", organizations_url, class: 'dropdown-item' %>
+                <% current_user.organizations.each do |o| %>
+                  <%= link_to o.name, organization_url(o), class: 'dropdown-item' %>
+                <% end %>
+
                 <div class="dropdown-divider"></div>
                 <%= link_to  destroy_user_session_path, method: :delete, data: {confirm: t('shared.are_you_sure')}, class: 'dropdown-item' do %>
                   <%= t('shared.logout') %>
@@ -62,12 +71,9 @@
     </nav>
 
     <div class="container-fluid mt-4">
-      <% if current_user %>
-        <%# current_user.inspect  %>
-        <h3> Selected organization: <%= link_to current_user.selected_organization, organization_url(current_user.selected_organization) %> </h3>
-      <% end %>
 
       <%= yield %>
+
     </div>
 
   </body>

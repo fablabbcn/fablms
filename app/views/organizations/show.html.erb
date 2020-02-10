@@ -1,18 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @organization.name %>
-</p>
-
-<p>
   <strong>Gitlab url:</strong>
   <%= @organization.gitlab_url %>
-</p>
-
-<p>
-  <strong>Gitlab token:</strong>
-  <%= @organization.gitlab_token %>
 </p>
 
 <p>
@@ -21,20 +11,19 @@
 </p>
 
 <%= link_to 'Edit', edit_organization_path(@organization) %> |
-<%= link_to 'Back', organizations_path %>
-
 
 <% if current_user.organization.gitlab_url.present? && current_user.organization.gitlab_token.present? %>
   <hr>
   <div class="div-gitlab-check">
     <%= link_to "Check Gitlab version", gitlab_check_organization_url(item:'version'), remote: true, class: 'btn btn-outline-primary' %>
     <br>
-    <%= link_to "Check Gitlab folder #{@organization.gitlab_folder_id}", gitlab_check_organization_url, remote: true, class: 'btn btn-outline-primary' %>
+    <%= link_to "Check Gitlab folder #{@organization.gitlab_folder_id} (test)", gitlab_check_organization_url, remote: true, class: 'btn btn-outline-primary my-2' %>
     <br>
     <%= link_to "Check Gitlab folder members", gitlab_check_organization_url(item:'students'), remote: true, class: 'btn btn-outline-primary' %>
     <br>
-    <div id="gitlab"><p>Gitlab Status should show here.</p></div>
   </div>
+  <hr>
+  <div id="gitlab"><p>Gitlab Status should show here.</p></div>
 <% end %>
 
 <hr>

@@ -11,20 +11,29 @@
   Found <%= @members.size %> members
   </p>
 
-  <table>
-    <% @members.each do |m| %>
+  <table class="table table-sm table-hover table-striped table-bordered">
+    <thead>
       <tr>
-        <td>
-          <%= m.id %>
-        </td>
-        <td>
-          <%= m.name %>
-        </td>
-        <td>
-          <%= link_to m.username, m.web_url %>
-        </td>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Username</th>
       </tr>
-    <% end %>
+    </thead>
+    <tbody>
+      <% @members.each do |m| %>
+        <tr>
+          <td>
+            <%= m.id %>
+          </td>
+          <td>
+            <%= m.name %>
+          </td>
+          <td>
+            <%= link_to m.username, m.web_url %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
   </table>
 
 <% end %>

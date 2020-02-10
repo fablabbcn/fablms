@@ -22,8 +22,8 @@
   <hr>
   <h2>Import Students with CSV</h2>
   <p> Supported fields: <b> code;name;email;continuing;lab_name;lab_handle;country;continent;username;website_path </b> </p>
-  <%= file_field_tag :file %>
+  <%= file_field_tag :file, class: 'btn btn-outline-primary' %>
   <%= hidden_field_tag :course_id, params[:id] %>
-  <%= submit_tag "Import students" %>
+  <%= submit_tag "Import students", class: 'btn btn-outline-danger' %>
   <hr>
 <% end %>
