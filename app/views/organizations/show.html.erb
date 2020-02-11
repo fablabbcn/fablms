@@ -12,16 +12,57 @@
 
 <% if current_user.organization.gitlab_url.present? && current_user.organization.gitlab_token.present? %>
   <hr>
+
   <div class="div-gitlab-check">
-    <%= link_to "Check Gitlab version", gitlab_check_organization_url(item:'version'), remote: true, class: 'btn btn-outline-primary' %>
-    <br>
-    <%= link_to "Check Gitlab folder #{@organization.gitlab_folder_id} (test)", gitlab_check_organization_url, remote: true, class: 'btn btn-outline-primary my-2' %>
-    <br>
-    <%= link_to "Check Gitlab folder members", gitlab_check_organization_url(item:'students'), remote: true, class: 'btn btn-outline-primary' %>
-    <br>
+    <%= link_to "Check Gitlab folder #{@organization.gitlab_folder_id} (test)", gitlab_check_organization_url, remote: true, class: 'btn btn-outline-secondary my-2' %>
+    <%= link_to "Get members of group #{@organization.gitlab_folder_id}", group_members_organizations_url(group_id: current_user.organization.gitlab_folder_id), remote: true, method:'POST', class: 'btn btn-outline-primary' %>
+    <%= link_to "Get projects of group #{@organization.gitlab_folder_id}", group_projects_organizations_url(group_id: current_user.organization.gitlab_folder_id), remote: true, method:'POST', class: 'btn btn-outline-primary' %>
+    <%= link_to "Get subgroups of group #{@organization.gitlab_folder_id}", group_subgroups_organizations_url(group_id: current_user.organization.gitlab_folder_id), remote: true, method:'POST', class: 'btn btn-outline-primary' %>
+    <%= link_to "Check Gitlab version", gitlab_check_organization_url(item:'version'), remote: true, class: 'btn btn-outline-secondary' %>
   </div>
+
   <hr>
+
+  <%= form_tag group_members_organizations_url, remote: true do %>
+    <div class="input-group">
+      <%= text_field_tag :group_id, nil, placeholder: 'Gitlab ID of FOLDER' %>
+      <div class="input-group-append">
+        <%= submit_tag 'Get group members', class: 'btn btn-outline-primary' %>
+      </div>
+    </div>
+  <% end %>
+
+  <%= form_tag group_subgroups_organizations_url, remote: true do %>
+    <div class="input-group my-2">
+      <%= text_field_tag :group_id, nil, placeholder: 'Gitlab ID of FOLDER' %>
+      <div class="input-group-append">
+        <%= submit_tag 'Get group subgroups', class: 'btn btn-outline-primary' %>
+      </div>
+    </div>
+  <% end %>
+
+  <%= form_tag group_projects_organizations_url, remote: true do %>
+    <div class="input-group my-2">
+      <%= text_field_tag :group_id, nil, placeholder: 'Gitlab ID of FOLDER' %>
+      <div class="input-group-append">
+        <%= submit_tag 'Get group projects', class: 'btn btn-outline-primary' %>
+      </div>
+    </div>
+  <% end %>
+
+  <%= form_tag issue_list_organizations_url, remote: true do %>
+    <div class="input-group mt-2">
+      <%= text_field_tag :group_id, nil, placeholder: 'Gitlab ID of PROJECT' %>
+      <div class="input-group-append">
+        <%= submit_tag 'Get issue list', class: 'btn btn-outline-primary' %>
+      </div>
+    </div>
+  <% end %>
+
+  <hr>
+
   <div id="gitlab"><p>Gitlab Status should show here.</p></div>
+
 <% else %>
   <p class="font-weight-bold font-italic mt-5">You must fill in the Gitlab URL and API key in order to talk to the API.</p>
 <% end %>

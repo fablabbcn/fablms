@@ -1,5 +1,6 @@
 class OrganizationsController < ApplicationController
   before_action :set_organization, only: [:show, :edit, :update, :destroy]
+  before_action :prepare_gitlab_connection
 
   require 'gitlab'
 
@@ -9,14 +10,44 @@ class OrganizationsController < ApplicationController
     @organizations = current_user.organizations
   end
 
-  def gitlab_check
+  def prepare_gitlab_connection
     Gitlab.endpoint = current_user.selected_organization.gitlab_url
     Gitlab.private_token = current_user.selected_organization.gitlab_token
+  end
 
+  def issue_list
+    @issues = Gitlab.issues(params[:group_id]).auto_paginate
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def group_members
+    @members = Gitlab.group_members(params[:group_id]).auto_paginate
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def group_projects
+    @projects = Gitlab.group_projects(params[:group_id]).auto_paginate
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def group_subgroups
+    @groups = Gitlab.group_subgroups(params[:group_id]).auto_paginate
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def gitlab_check
     if params[:item] == 'version'
       @version = Gitlab.version.version
     elsif params[:item] == 'students'
-      @members = Gitlab.group_members(current_user.selected_organization.gitlab_folder_id)
+      @members = Gitlab.group_members(current_user.selected_organization.gitlab_folder_id).auto_paginate
     else
       @response = Gitlab.group(current_user.selected_organization.gitlab_folder_id)
     end

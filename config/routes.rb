@@ -4,6 +4,12 @@ Rails.application.routes.draw do
     member do
       get 'gitlab_check'
     end
+    collection do
+      post :group_members
+      post :group_subgroups
+      post :group_projects
+      post :issue_list
+    end
   end
   resources :students do
     collection do

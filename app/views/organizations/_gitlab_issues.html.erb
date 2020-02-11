@@ -1,0 +1,35 @@
+<% if @issues %>
+  <p>
+  Found <b><%= @issues.size %></b> issues
+  </p>
+
+  <table class="table table-sm bg-white table-hover table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Author</th>
+        <th>State</th>
+        <th>Task Status</th>
+        <th>Title</th>
+        <th>Due Date</th>
+        <th>Upvotes</th>
+        <th>Downvotes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @issues.each do |m| %>
+        <tr>
+          <td><%= m.id %></td>
+          <td><%= m.author.name %></td>
+          <td><%= m.state %></td>
+          <td><%= m.task_completion_status.completed_count %> / <%= m.task_completion_status.count %></td>
+          <td><%= link_to m.title, m.web_url, target: '_blank' %></td>
+          <td><%= m.due_date %></td>
+          <td><%= m.upvotes %></td>
+          <td><%= m.downvotes %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<% end %>

@@ -1,0 +1,27 @@
+<% if @projects %>
+  <p>
+  Found <b><%= @projects.size %></b> projects
+  </p>
+
+  <table class="table table-sm bg-white table-hover table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>name_with_namespace</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @projects.each do |m| %>
+        <tr>
+          <td><%= m.id %></td>
+          <td><%= link_to m.name, m.web_url, target: '_blank' %></td>
+          <td><%= m.description %></td>
+          <td><%= m.name_with_namespace %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<% end %>

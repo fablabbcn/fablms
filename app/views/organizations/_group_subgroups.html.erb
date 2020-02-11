@@ -1,0 +1,25 @@
+<% if @groups %>
+  <p>
+  Found <b><%= @groups.size %></b> groups
+  </p>
+
+  <table class="table table-sm bg-white table-hover table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @groups.each do |m| %>
+        <tr>
+          <td><%= m.id %></td>
+          <td><%= link_to m.name, m.web_url, target: '_blank' %></td>
+          <td><%= m.description %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<% end %>
