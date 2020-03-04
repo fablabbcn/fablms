@@ -37,7 +37,8 @@ jobs:
 
     - name: Test with Rake
       run: |
-        bundle exec rake
+        bundle exec rails db:setup
+        bundle exec rails test
       env:
         #Note: DATABASE_URL does not work in TEST env.
         TEST_DB_HOST: localhost
