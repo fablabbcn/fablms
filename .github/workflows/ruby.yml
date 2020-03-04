@@ -4,8 +4,24 @@ on: [push]
 
 jobs:
   build:
-
+    name: Build and test
     runs-on: ubuntu-latest
+
+    services:
+      redis:
+        image: redis:4
+        ports:
+          - 6379:6379
+      postgres:
+        image: postgres:10
+        env:
+          POSTGRES_DB: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: postgres
+        ports:
+          - 5432:5432
+        # needed because the postgres container does not provide a healthcheck
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
     - uses: actions/checkout@v2
@@ -13,8 +29,18 @@ jobs:
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.6.x
-    - name: Build and test with Rake
+
+    - name: Bundle
       run: |
         gem install bundler
         bundle install --jobs 4 --retry 3
+
+    - name: Test with Rake
+      run: |
         bundle exec rake
+      env:
+        #Note: DATABASE_URL does not work in TEST env.
+        TEST_DB_HOST: localhost
+        TEST_DB_NAME: postgres
+        TEST_DB_PASSWORD: postgres
+        TEST_DB_USERNAME: postgres
