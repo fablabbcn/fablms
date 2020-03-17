@@ -40,9 +40,9 @@
       <% @students.each do |student| %>
         <tr>
           <td><%= check_box_tag "student_ids[]", student.id %></td>
-          <td><%= student.code %></td>
-          <td><%= student.name %></td>
-          <td><%= student.username %></td>
+          <td><%= link_to student.code || "", student %></td>
+          <td><%= link_to student.name || "", student %></td>
+          <td><%= link_to student.username || "", student %></td>
           <td><%= student.email %></td>
           <td><%= student.continuing %></td>
           <td><%= student.is_instructor %></td>

@@ -34,9 +34,11 @@ Lab.create!(name: 'Lab 4', organization: org, course: course_1)
 Lab.create!(name: 'Lab 5', organization: org, course: course_2)
 
 Student.create!(name: 'Stud 1', organization: org, course: course_1, username: 'user1', email: 'email1')
-Student.create!(name: 'Stud 2', organization: org, course: course_2, username: 'user2', email: 'email2')
-Student.create!(name: 'Stud 3', organization: org, course: course_3, username: 'user3', email: 'email3')
-Student.create!(name: 'Stud 4', organization: org, course: course_4, username: 'user4', email: 'email4')
-Student.create!(name: 'Stud 5', organization: org, course: course_5, username: 'user5', email: 'email5')
+Student.create!(name: 'Stud 2', organization: org, course: course_1, username: 'user2', email: 'email2')
+Student.create!(name: 'Stud 3', organization: org, course: course_1, username: 'user3', email: 'email3')
+Student.create!(name: 'Stud 4', organization: org, course: course_2, username: 'user4', email: 'email4')
+Student.create!(name: 'Stud 6', organization: org, course: course_2, username: 'user5', email: 'email5')
+Student.create!(name: 'Stud 7', organization: org, course: course_3, username: 'user5', email: 'email5')
+Student.create!(name: 'Stud 8', organization: org, course: course_4, username: 'user5', email: 'email5')
 
 puts 'Seed created 5 of everything'
