@@ -41,10 +41,10 @@
             <%= link_to "Courses", courses_url, class:'nav-link' %>
           </li>
           <li class="nav-item">
-            <%= link_to "Students", students_url, class:'nav-link' %>
+            <%= link_to "Labs", labs_url, class:'nav-link' %>
           </li>
           <li class="nav-item">
-            <%# link_to "Lab", labs_url, class:'nav-link' %>
+            <%= link_to "Students", students_url, class:'nav-link' %>
           </li>
 
           <% if current_user %>
@@ -57,7 +57,7 @@
                 <%= link_to "Organizations (#{current_user.organizations.count})", organizations_url, class: 'dropdown-item' %>
                 <div class="dropdown-divider"></div>
                 <% current_user.organizations.each do |o| %>
-                  <%= link_to o.name, organization_url(o), class: 'dropdown-item' %>
+                  <%= link_to o.name, organization_url(o), class: "dropdown-item #{'active' if o.id == current_user.organization_id}" %>
                 <% end %>
 
                 <div class="dropdown-divider"></div>

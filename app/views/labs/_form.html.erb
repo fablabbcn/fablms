@@ -22,13 +22,13 @@
   </div>
 
   <div class="field">
-    <%= form.label :gitlab_id %>
-    <%= form.text_field :gitlab_id %>
+    <%= form.label :course_id %>
+    <%= form.select :course_id, current_user.organization.courses.pluck(:name, :id) %>
   </div>
 
   <div class="field">
-    <%= form.label :course_id %>
-    <%= form.select :course_id, Course.pluck(:name, :id) %>
+    <%= form.label :country %>
+    <%= form.country_select :country %>
   </div>
 
   <div class="actions">

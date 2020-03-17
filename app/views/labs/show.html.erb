@@ -11,16 +11,16 @@
 </p>
 
 <p>
-  <strong>Gitlab:</strong>
-  <%= @lab.gitlab_id %>
+  <strong>Course:</strong>
+  <%= @lab.course %>
 </p>
 
 <p>
-  <strong>Course:</strong>
-  <%= @lab.course_id %>
+  <strong>Country:</strong>
+  <%= @lab.country %>
 </p>
 
 <%= link_to 'Edit', edit_lab_path(@lab) %> |
 <%= link_to 'Back', labs_path %>
 
-<%= render @lab.students %>
+<%# render @lab.students %>

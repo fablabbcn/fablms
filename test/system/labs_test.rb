@@ -14,8 +14,8 @@ class LabsTest < ApplicationSystemTestCase
     visit labs_url
     click_on "New Lab"
 
+    fill_in "Country", with: @lab.country
     fill_in "Course", with: @lab.course_id
-    fill_in "Gitlab", with: @lab.gitlab_id
     fill_in "Name", with: @lab.name
     fill_in "Slug", with: @lab.slug
     click_on "Create Lab"
@@ -28,8 +28,8 @@ class LabsTest < ApplicationSystemTestCase
     visit labs_url
     click_on "Edit", match: :first
 
+    fill_in "Country", with: @lab.country
     fill_in "Course", with: @lab.course_id
-    fill_in "Gitlab", with: @lab.gitlab_id
     fill_in "Name", with: @lab.name
     fill_in "Slug", with: @lab.slug
     click_on "Update Lab"

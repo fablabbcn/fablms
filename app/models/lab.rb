@@ -1,4 +1,4 @@
 class Lab < ApplicationRecord
   belongs_to :course
-  has_many :students
+  #has_many :students
 end

@@ -17,7 +17,7 @@ class LabsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create lab" do
     assert_difference('Lab.count') do
-      post labs_url, params: { lab: { course_id: @lab.course_id, gitlab_id: @lab.gitlab_id, name: @lab.name, slug: @lab.slug } }
+      post labs_url, params: { lab: { country: @lab.country, course_id: @lab.course_id, name: @lab.name, slug: @lab.slug } }
     end
 
     assert_redirected_to lab_url(Lab.last)
@@ -34,7 +34,7 @@ class LabsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update lab" do
-    patch lab_url(@lab), params: { lab: { course_id: @lab.course_id, gitlab_id: @lab.gitlab_id, name: @lab.name, slug: @lab.slug } }
+    patch lab_url(@lab), params: { lab: { country: @lab.country, course_id: @lab.course_id, name: @lab.name, slug: @lab.slug } }
     assert_redirected_to lab_url(@lab)
   end
 

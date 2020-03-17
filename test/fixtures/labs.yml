@@ -3,11 +3,11 @@
 one:
   name: MyString
   slug: MyString
-  gitlab_id: MyString
   course: one
+  country: MyString
 
 two:
   name: MyString
   slug: MyString
-  gitlab_id: MyString
   course: two
+  country: MyString
