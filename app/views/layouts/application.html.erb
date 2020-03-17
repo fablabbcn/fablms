@@ -61,6 +61,7 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
                 <%= link_to "Organizations (#{current_user.organizations.count})", organizations_url, class: 'dropdown-item' %>
+                <div class="dropdown-divider"></div>
                 <% current_user.organizations.each do |o| %>
                   <%= link_to o.name, organization_url(o), class: 'dropdown-item' %>
                 <% end %>

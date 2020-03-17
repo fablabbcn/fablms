@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   before_validation :create_org_on_signup
 
-  has_many :user_organizations
+  has_many :user_organizations, dependent: :destroy
   has_many :organizations, through: :user_organizations
   belongs_to :organization
 
