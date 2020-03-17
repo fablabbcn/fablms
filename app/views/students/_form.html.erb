@@ -20,7 +20,7 @@
 
   <div class="field">
     <%= form.label :course_id %>
-    <%= form.select :course_id, current_user.organization.courses.pluck(:name, :id) %>
+    <%= form.select :course_id, current_user.organization.courses.pluck(:name, :id), selected: params[:course_id] %>
   </div>
 
   <div class="field">
@@ -65,12 +65,7 @@
 
   <div class="field">
     <%= form.label :country %>
-    <%= form.text_field :country %>
-  </div>
-
-  <div class="field">
-    <%= form.label :continent %>
-    <%= form.text_field :continent %>
+    <%= form.country_select :country %>
   </div>
 
   <div class="actions">

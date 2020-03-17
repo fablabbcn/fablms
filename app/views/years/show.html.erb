@@ -12,7 +12,7 @@
 <%= link_to 'Back', years_path %>
 
 <hr>
-<h2>Courses in <%= @year %></h2>
+<h2><%= @year.courses.count %> courses in <%= @year %></h2>
 <%= render @year.courses %>
 
 <br>

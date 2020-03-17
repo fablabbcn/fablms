@@ -4,7 +4,8 @@ class YearsController < ApplicationController
   # GET /years
   # GET /years.json
   def index
-    @years = current_user.organization.years
+    @q = current_user.organization.years.order(name: :desc).ransack(params[:q])
+    @years = @q.result(distinct: true)
   end
 
   # GET /years/1

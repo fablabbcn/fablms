@@ -1,14 +1,30 @@
 <h1>Students</h1>
 
+<div class="row mb-2">
+  <div class="col-lg-6 col-md-7">
+    <%= search_form_for @q do |f| %>
+      <div class="input-group">
+        <%= f.search_field :name_or_username_or_email_cont, placeholder: 'Search for student name/email/username', class: 'form-control' %>
+
+        <%= f.collection_select(:course_id_eq, @courses, :id, :name, { include_blank: 'Filter by course' }, {class: 'mx-2 form-control'}) %>
+
+        <div class="input-group-append">
+          <%= f.submit class: 'btn btn-primary' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
 <%= form_tag edit_multiple_students_url, remote: true do %>
   <table class="table table-sm bg-white table-bordered table-hover table-striped">
     <thead>
       <tr>
         <th></th>
-        <th>Code</th>
-        <th>Name</th>
-        <th>Username</th>
-        <th>Email</th>
+        <th><%= sort_link(@q, :code) %></th>
+        <th><%= sort_link(@q, :name) %></th>
+        <th><%= sort_link(@q, :username) %></th>
+        <th><%= sort_link(@q, :email) %></th>
         <th>Continuing</th>
         <th>Is instructor</th>
         <th>Lab name</th>
@@ -32,8 +48,8 @@
           <td><%= student.is_instructor %></td>
           <td><%= student.lab_name %></td>
           <td><%= student.lab_handle %></td>
-          <td><%= student.country %></td>
-          <td><%= student.continent %></td>
+          <td><%= ISO3166::Country[student.country]&.name || nil %></td>
+          <td><%= ISO3166::Country[student.country]&.continent || nil %></td>
           <td><%= link_to student.course, student.course %></td>
           <td><%= link_to 'Show', student %></td>
           <td><%= link_to 'Edit', edit_student_path(student) %></td>

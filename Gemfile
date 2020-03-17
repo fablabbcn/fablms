@@ -10,6 +10,7 @@ gem 'devise'
 gem 'gitlab'
 
 gem 'country_select'
+gem 'ransack', github: 'activerecord-hackery/ransack'
 
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3', '~> 1.4'

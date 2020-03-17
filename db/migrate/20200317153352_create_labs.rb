@@ -5,6 +5,7 @@ class CreateLabs < ActiveRecord::Migration[6.0]
       t.string :slug
       t.belongs_to :course, null: false, foreign_key: true
       t.string :country
+      t.belongs_to :organization, null: false, foreign_key: true
 
       t.timestamps
     end

@@ -11,10 +11,8 @@
 <%= link_to 'Edit', edit_course_path(@course) %> |
 <%= link_to 'Back', courses_path %>
 
-<hr>
-<%= render template: 'students/index' %>
 
-<br>
+<p class="mt-5"> <%= @course.students.count %> students in this course.  </p>
 
 <%= form_tag import_students_url, multipart: true do %>
   <hr>
@@ -25,3 +23,5 @@
   <%= submit_tag "Import students", class: 'btn btn-outline-danger' %>
   <hr>
 <% end %>
+
+<%= link_to "Add student to this course", new_student_url(course_id: params[:id]), class: 'btn btn-outline-primary' %>

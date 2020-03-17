@@ -5,9 +5,11 @@ one:
   slug: lab1
   course: one
   country: 'IS'
+  organization: one
 
 two:
   name: Lab2
   slug: lab2
   course: two
   country: 'VE'
+  organization: two

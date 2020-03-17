@@ -4,7 +4,10 @@ class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
   def index
-    @students = current_user.organization.students
+    @q = current_user.organization.students.ransack(params[:q])
+    @students = @q.result(distinct: true)
+
+    @courses = current_user.organization.courses
   end
 
   def edit_multiple

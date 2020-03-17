@@ -4,7 +4,8 @@ class LabsController < ApplicationController
   # GET /labs
   # GET /labs.json
   def index
-    @labs = Lab.all
+    @q = current_user.organization.labs.ransack(params[:q])
+    @labs = @q.result(distinct: true)
   end
 
   # GET /labs/1
@@ -24,7 +25,7 @@ class LabsController < ApplicationController
   # POST /labs
   # POST /labs.json
   def create
-    @lab = Lab.new(lab_params)
+    @lab = current_user.organization.labs.new(lab_params)
 
     respond_to do |format|
       if @lab.save
@@ -69,6 +70,6 @@ class LabsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lab_params
-      params.require(:lab).permit(:name, :slug, :course_id, :country)
+      params.require(:lab).permit(:name, :slug, :course_id, :country, :organization_id)
     end
 end
