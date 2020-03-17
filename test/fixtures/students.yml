@@ -3,13 +3,13 @@
 one:
   code: MyString
   name: MyString
-  username: MyString
+  username: user1
   email: MyString
   continuing: false
   is_instructor: false
   lab_name: MyString
   lab_handle: MyString
-  country: MyString
+  country: 'VE'
   continent: MyString
   website_path: MyString
   organization: one
@@ -18,13 +18,13 @@ one:
 two:
   code: MyString
   name: MyString
-  username: MyString
+  username: user2
   email: MyString
   continuing: false
   is_instructor: false
   lab_name: MyString
   lab_handle: MyString
-  country: MyString
+  country: 'IS'
   continent: MyString
   website_path: MyString
   organization: two

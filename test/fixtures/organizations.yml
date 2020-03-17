@@ -1,13 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  name: Org1
   gitlab_url: MyString
   gitlab_token: MyString
   gitlab_folder_id: MyString
 
 two:
-  name: MyString
+  name: Org2
   gitlab_url: MyString
   gitlab_token: MyString
   gitlab_folder_id: MyString

@@ -18,10 +18,10 @@ class StudentsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create student" do
     assert_difference('Student.count') do
-      post students_url, params: { student: { code: @student.code, continent: @student.continent, continuing: @student.continuing, country: @student.country, course_id: @student.course_id, email: @student.email, is_instructor: @student.is_instructor, lab_handle: @student.lab_handle, lab_name: @student.lab_name, name: @student.name, organization_id: @student.organization_id, username: @student.username, website_path: @student.website_path } }
+      post students_url, params: { student: { code: @student.code, continent: @student.continent, continuing: @student.continuing, country: @student.country, course_id: @student.course_id, email: @student.email, is_instructor: @student.is_instructor, lab_handle: @student.lab_handle, lab_name: @student.lab_name, name: @student.name, organization_id: @student.organization_id, username: 'user3', website_path: @student.website_path } }
     end
 
-    assert_redirected_to student_url(Student.last)
+    assert_redirected_to students_url
   end
 
   test "should show student" do
