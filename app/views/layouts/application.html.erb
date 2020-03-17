@@ -62,8 +62,8 @@
 
                 <div class="dropdown-divider"></div>
                 <%= link_to "GitHub", "https://github.com/fablabbcn/fablms", class:'dropdown-item', target: '_blank' %>
-                <%= link_to  destroy_user_session_path, method: :delete, data: {confirm: t('shared.are_you_sure')}, class: 'dropdown-item' do %>
-                  <%= t('shared.logout') %>
+                <%= link_to destroy_user_session_path, method: :delete, data: {confirm: 'Log Out?'}, class: 'dropdown-item' do %>
+                  Log Out
                 <% end %>
               </div>
             </li>

@@ -13,7 +13,7 @@ class User < ApplicationRecord
   def create_org_on_signup
     # if not invited
     # New users must belong to an organization, let's create it automatically
-    if new_record?
+    if new_record? and organization_id.nil?
       org = Organization.create! name: "#{email.split("@")[0]} Organization"
       self.organization_id = org.id
       # add to array of orgs
