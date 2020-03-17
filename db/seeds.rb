@@ -14,12 +14,14 @@ year_3 = Year.create!(name: 2020, organization: org)
 year_4 = Year.create!(name: 2021, organization: org)
 year_5 = Year.create!(name: 2022, organization: org)
 
-User.create!(
+u = User.create!(
   organization: org,
   email: 'admin@example.com',
   password: 'password',
   password_confirmation: 'password'
 )
+
+UserOrganization.create!(organization: org, user: u)
 
 course_1 = Course.create!(name: 'Course 1', organization: org, year: year_1)
 course_2 = Course.create!(name: 'Course 3', organization: org, year: year_2)
@@ -38,7 +40,7 @@ Student.create!(name: 'Stud 2', organization: org, course: course_1, username: '
 Student.create!(name: 'Stud 3', organization: org, course: course_1, username: 'user3', email: 'email3')
 Student.create!(name: 'Stud 4', organization: org, course: course_2, username: 'user4', email: 'email4')
 Student.create!(name: 'Stud 6', organization: org, course: course_2, username: 'user5', email: 'email5')
-Student.create!(name: 'Stud 7', organization: org, course: course_3, username: 'user5', email: 'email5')
-Student.create!(name: 'Stud 8', organization: org, course: course_4, username: 'user5', email: 'email5')
+Student.create!(name: 'Stud 7', organization: org, course: course_3, username: 'user6', email: 'email6')
+Student.create!(name: 'Stud 8', organization: org, course: course_4, username: 'user7', email: 'email7')
 
 puts 'Seed created 5 of everything'
