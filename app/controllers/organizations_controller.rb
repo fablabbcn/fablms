@@ -115,7 +115,7 @@ class OrganizationsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_organization
-      @organization = Organization.find(params[:id])
+      @organization = current_user.organizations.find(params[:id])
       current_user.organization = @organization
       current_user.save
     end

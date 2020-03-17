@@ -16,4 +16,5 @@
 <%= render @year.courses %>
 
 <br>
-<%= link_to "Create a new course in #{@year}", new_course_url(year: @year) %>
+
+<%= link_to "Create a new course in #{@year}", new_course_url(year: @year), class: 'btn btn-outline-primary' %>

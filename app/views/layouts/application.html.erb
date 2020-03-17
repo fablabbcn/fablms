@@ -35,9 +35,6 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto w-100">
           <li class="nav-item">
-            <%= link_to "Organizations", organizations_url, class:'nav-link' %>
-          </li>
-          <li class="nav-item">
             <%= link_to "Years", years_url, class:'nav-link' %>
           </li>
           <li class="nav-item">
@@ -48,9 +45,6 @@
           </li>
           <li class="nav-item">
             <%# link_to "Lab", labs_url, class:'nav-link' %>
-          </li>
-          <li class="nav-item ml-lg-5">
-            <%= link_to "GitHub", "https://github.com/fablabbcn/fablms", class:'nav-link', target: '_blank' %>
           </li>
 
           <% if current_user %>
@@ -67,6 +61,7 @@
                 <% end %>
 
                 <div class="dropdown-divider"></div>
+                <%= link_to "GitHub", "https://github.com/fablabbcn/fablms", class:'dropdown-item', target: '_blank' %>
                 <%= link_to  destroy_user_session_path, method: :delete, data: {confirm: t('shared.are_you_sure')}, class: 'dropdown-item' do %>
                   <%= t('shared.logout') %>
                 <% end %>

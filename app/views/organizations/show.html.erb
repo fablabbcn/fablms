@@ -64,7 +64,25 @@
   <div id="gitlab"><p>Gitlab Status should show here.</p></div>
 
 <% else %>
-  <p class="font-weight-bold font-italic mt-5">You must fill in the Gitlab URL and API key in order to talk to the API.</p>
+  <p class="font-weight-bold font-italic text-danger mt-5">You must fill in the Gitlab URL and API key in order to talk to the API.</p>
 <% end %>
 
-<hr>
+<hr class="my-5">
+
+<table class="table table-bordered w-50 table-striped">
+
+  <tr>
+    <th><%= link_to "Years", years_url %></th>
+    <td> <%= current_user.organization.years.count %> </td>
+  </tr>
+
+  <tr>
+    <th><%= link_to "Courses", courses_url %></th>
+    <td> <%= current_user.organization.courses.count %> </td>
+  </tr>
+
+  <tr>
+    <th><%= link_to "Students", students_url %></th>
+    <td> <%= current_user.organization.students.count %> </td>
+  </tr>
+</table>
